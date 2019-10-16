@@ -1,0 +1,335 @@
+.mainheader, .mainheader ul,
+.mainheader .el-submenu__title,
+.mainheader .el-submenu__title svg span,
+.mainheader .el-active .el-submenu__title,
+.mainheader .el-submenu__title,
+.mainheader .is-active span,
+.mainheader .is_opened .el-submenu__title svg span,
+.mainheader .el-menu ul,
+.mainheader .el-submenu .el-submenu__title,
+.mainheader .el-submenu__title,
+.mainheader .el-menu ul a li,
+.mainheader .menu-wrapper .is-active .el-submenu__title .mainheader .el-submenu .is-active,
+.mainheader .el-menu--popup-bottom-start a .el-menu-item span,
+.nest-menu .el-submenu .el-submenu__title,
+.el-menu--horizontal .el-menu--popup-right-start a .el-menu-item,
+.el-menu--horizontal .el-menu li,
+.router-link-exact-active .router-link-active,
+.el-menu-item .is-active .el-menu .el-menu--popup .el-menu--popup-bottom-start .router-link-exact-active .router-link-active .el-submenu .is-active {
+  background: #3f3f3f !important;
+}
+
+* {
+  font: normal "Microsoft YaHei", !important;
+}
+
+.el-submenu__title,
+.el-menu-item span,
+.el-button--primary span {
+  color: #fff !important;
+}
+
+.el-table th > .cell,
+.el-submenu.is-opened > .el-menu--inline > .el-menu-item,
+.el-checkbox__label,
+.el-tree-node__label,
+.el-form-item__label {
+  color: #333333 !important;
+  font-size: 14px !important;
+}
+
+.colAddrcells .tit,
+.uladdrs li {
+  color: #333333 !important;
+  font-size: 16px !important;
+}
+
+.rowAddrcells .colAddrcells .uladdrs .seled {
+  background-color: #aaaaaa !important;
+  color: #e1e1e1 !important;
+}
+
+.el-table .cell {
+  color: #555555 !important;
+  font-size: 14px !important;
+}
+
+.el-dropdown-menu__item {
+  color: #333333 !important;
+  font-size: 14px !important;
+}
+
+.el-table,
+.el-menu--horizontal.menu-wrapper .el-submenu__title,
+#app .hideSidebar .el-submenu > .el-submenu__title span,
+.el-tabs__item {
+  color: #333 !important;
+  font-size: 14px !important;
+}
+.el-picker-panel__shortcut:hover,
+.el-time-panel__btn.confirm,
+.el-submenu__title:hover, .el-menu-item:hover, .el-menu-item span:hover {
+  color: #c90028 !important;
+}
+.el-select-dropdown__item.selected,
+.el-submenu.is-active .el-submenu__title,
+.router-link-exact-active .el-menu-item span,
+.el-tabs__item .is-active,
+.el-submenu.is-opened > .el-menu--inline > .el-menu-item.is-active,
+.el-tabs__item.is-active,
+.el-checkbox__input.is-checked + .el-checkbox__label,
+.el-date-table td.today span,
+.el-col dl dt strong {
+  color: #c90028 !important;
+}
+/* checkbox */
+.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: #c90028 !important;
+  border-color: #c90028 !important;
+}
+/* 单选框滑过 */
+.el-checkbox__inner:hover{
+  border-color: #c90028 !important;
+}
+/* 下拉框 select颜色 */
+.el-input .el-input--suffix,
+/* .el-select .el-input__inner:focus, */
+/* .el-select .el-input.is-focus .el-input__inner, */
+/* 日期插件 */
+.el-tabs__active-bar {
+  background-color: #c90028 !important;
+}
+
+.el-form-item.is-success .el-input__inner {
+  border-color: #dcdfe6 !important;
+}
+
+
+.el-form-item.is-success .el-input__inner:focus,
+.el-form-item.is-success .el-textarea__inner, 
+.el-input__inner:focus,
+.el-textarea__inner:focus,
+.el-range-editor.is-active,
+.el-range-editor.is-active:hover,
+.el-select .el-input.is-focus .el-input__inner,
+.el-form-item.is-success .el-textarea__inner:focus {
+  border-color: #c90028 !important;
+}
+
+.el-date-table td.current:not(.disabled) span,
+.el-button.is-disabled, .el-button.is-disabled:focus, .el-button.is-disabled,
+.el-date-table td.end-date span, .el-date-table td.start-date span,
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: #c90028 !important;
+  color: #fff;
+}
+
+.el-message-box__btns button:nth-child(2),
+.el-button--primary {
+  border-color: #c90028 !important;
+  background: #c90028 !important;
+}
+
+.el-button--primary:hover,
+.el-message-box__btns button:nth-child(2):hover,
+.el-button--success {
+  border-color: #b00023 !important;
+  background: #b00023 !important;
+}
+
+.el-button--info {
+  border-color: #555 !important;
+  background: #555 !important;
+}
+
+.el-button--info:hover {
+  border-color: #555555 !important;
+  background: #555555 !important;
+}
+
+.highcharts-title tspan {
+  color: #333;
+  font-family: HYZHongSongJ;
+}
+
+.el-button--danger {
+  background-color: #9f0002 !important;
+  border-color: #9f0002 !important;
+}
+
+.el-button--default {
+  background-color: #555 !important;
+  color: #fff !important;
+}
+
+.el-tree-node__content:hover,
+.el-button--default:hover {
+  background-color: #AAAAAA !important;
+  border-color: #AAAAAA !important;
+  color: #FFF !important;
+}
+
+.el-dropdown-menu__item:hover {
+  background-color: #ccc !important;
+}
+
+.del,
+/* .el-date-table td.today span, */
+.available .today .in-range .start-date .end-date {
+  background-color: #9f0002 !important;
+  color: #fff !important;
+}
+
+.el-picker-panel__footer > .el-button--default,
+.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
+  background-color: #e1e1e1;
+  background: #00ADEF !important;
+}
+
+.el-button--primary:hover {
+  border-color: #b00023 !important;
+  background: #b00023 !important;
+}
+
+.el-button--info {
+  border-color: #555 !important;
+  background: #555 !important;
+}
+
+.el-button--danger {
+  border-color: #555 !important;
+  background: #555 !important;
+}
+
+.el-button--info:hover {
+  border-color: #555 !important;
+  background: #555 !important;
+}
+
+.visualmenu .el-submenu__title,
+.visualmenu .el-menu-item span {
+  color: #303133 !important;
+}
+
+.visualmenu .el-menu-item {
+  border-right: 1px solid #e6e6e6;
+}
+
+.login-container .el-form-item {
+  border: 1px solid #999 !important;
+  background: #ccc !important;
+}
+
+.login-container .el-input input {
+  color: #333 !important;
+}
+
+.login-container .el-input input::-webkit-input-placeholder {
+  color: #999 !important;
+}
+
+.login-container .el-input input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #999 !important;
+}
+
+.login-container .el-input input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #999 !important;
+}
+
+.el-table__row .current-row {
+  background: #c90028 !important;
+}
+
+.el-date-editor .el-range-separator {
+  padding: 0 5px;
+  line-height: 32px;
+  width: 10%;
+  color: #303133;
+}
+
+.el-picker-panel__footer > .el-button--default, .el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
+  background-color: #e1e1e1;
+  background: #c90028 !important;
+}
+
+.lookTips {
+  background: #c90028 !important;
+}
+
+.carBox .edit[data-v-20cbb352] {
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  background: #c90028 !important;
+  color: #fff;
+}
+
+.filterR .el-button ,
+.el-radio__input.is-checked .el-radio__inner{
+  border-color: #b00023 !important;
+  background: #b00023 !important;
+}
+.carBox .edit{
+  border-color:#b00023!important;
+  background:#b00023!important;
+}
+/* .is-active .svg-icon{
+  color:#b00023!important;
+} */
+
+/* .router-link-exact-active .router-link-active > */
+.available:hover,
+.el-picker-panel__footer .el-button--text span,
+.router-link-active .is-active .svg-icon,
+.el-loading-text,
+.el-radio__input.is-checked+.el-radio__label,
+.el-pager>.number:hover{
+  color: #c90028 !important;
+}
+.el-pager>.active:hover{
+  color:#fff!important;
+}
+.el-loading-spinner .path{
+  color:#c90028 !important;
+}
+/* 标签 */
+.el-tag .el-icon-close:hover{
+  background:rgba(176,0,35,.1) !important;
+}
+.el-tag .el-icon-close{
+  color: #c90028 !important;
+}
+.el-tag{
+  color: #c90028 !important;
+  background:rgba(176,0,35,.1)!important;
+  border-color:rgba(176,0,35,.2)!important;
+}
+.el-tag--info{
+  color: #353b46!important;
+  background-color: rgba(144,147,153,.1)!important;
+  border-color: rgba(144,147,153,.2)!important;
+}
+.tagBox p{
+  border-color:#c90028 !important;
+}
+
+.carStore input{
+  outline:none!important;
+}
+/*# sourceMappingURL=index.css.map */
+.el-submenu__icon-arrow {
+  position: absolute;
+  top: 50%;
+  right: 8px!important;
+  margin-top: -7px;
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s,-webkit-transform .3s;
+  font-size: 12px;
+}
+.el-cascader-menu__item.is-active{
+  color: #c90028 !important;   
+}

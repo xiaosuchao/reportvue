@@ -1,0 +1,120 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  // font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-family:"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Source Han Sans SC","Microsoft YaHei","SimHei",Helvetica,Arial,serif!important;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app{
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+div:focus{
+  outline: none;
+ }
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+//main-container全局样式
+.app-main{
+  min-height: 100%
+}
+
+.app-container {
+  padding: 20px;
+}
+
+ul,li{list-style: none; margin: 0; padding: 0;}
+$colorbule:#176Db7;
+$colorgreen:#67C23A;
+$colorwarning:#E6A23C;
+$colordanger:#F56C6C;
+$colordeepgrey:#909399;
+.bgblue{ background: $colorbule; color: #fff;}
+.bggreen{ background: $colorgreen; color: #fff;}
+.bgdanger{ background: $colordanger; color: #fff;}
+
+.filter-container{padding-bottom: 10px;}
+.col2form{ overflow: hidden;}
+.col2form .el-form-item{ width: 48%; float: left;}
+.scheduleform section{ overflow: hidden; position: relative; border-bottom: 1px dashed #ccc; margin-bottom: 16px;}
+.scheduleform section .btnadd{ position:absolute; right: 16px; bottom: 16px;}
+.scheduleform section .btndel{ position:absolute; right: 16px; top: 16px;}
+.scheduleform .el-form-item{ width: 45%; }
+.inp2out .el-input{ width: 48%;}
+
+.rowdatacards{
+  padding-bottom: 10px;
+  .el-col{
+    padding-right: 10px;
+    .cardbox{
+      padding:20px; border-radius: 6px; display: flex; align-items: center;
+      span{}
+      strong{font-size: 24px; font-weight: normal; margin-left: 30px;}
+    }
+  }
+  
+}
+
+.sliderout{
+  height:100%;
+  .platname{ 
+    height: 8%; font-size: 14px;
+  }
+  .el-scrollbar{ height: 92%;}
+
+}

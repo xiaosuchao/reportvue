@@ -1,0 +1,275 @@
+<template>
+  <div class="login-container">
+    <div class="header">
+      <div class="headerBox">
+        <p><router-link to="/downloadApp">App下载</router-link></p>
+        <p><router-link to="/downloadApp"><img style="display:block;width:20px;height:20px;margin-right:10px;" src="@/assets/images/andrion.png"></router-link></p>
+        <p><router-link to="/downloadApp"><img style="display:block;width:20px;height:20px;margin-right:3px;" src="@/assets/images/iphone.png"></router-link></p>
+      </div>
+    </div>
+    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" label-position="left">
+      <h3 class="title">{{ sysinfo.organizationName }}智能展厅</h3>
+      <el-form-item prop="username">
+        <span class="svg-container">
+          <svg-icon icon-class="user" />
+        </span>
+        <el-input v-model="loginForm.username" name="username" type="text" placeholder="username"/>
+      </el-form-item>
+      <el-form-item prop="password">
+        <span class="svg-container">
+          <svg-icon icon-class="password" />
+        </span>
+        <el-input
+          :type="pwdType"
+          v-model="loginForm.password"
+          name="password"
+          auto-complete="on"
+          placeholder="password"
+          @keyup.enter.native="handleLogin" />
+        <span class="show-pwd" @click="showPwd">
+          <svg-icon icon-class="eye" />
+        </span>
+      </el-form-item>
+      <el-form-item>
+        <span class="svg-container">
+          <svg-icon icon-class="picture" />
+        </span>
+        <el-input v-model="loginForm.verify_code" name="verify_code" maxlength="4" type="text" auto-complete="on" placeholder="验证码" @keyup.native="keysubm" />
+        <img :src="vcodesrc" style="position:absolute; right:0; cursor:pointer;height:47px;" @click="getVcode" >
+      </el-form-item>
+      <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
+        登 录
+      </el-button>
+      <!-- <div class="tips">
+        <span style="margin-right:20px;">username: admin</span>
+        <span> password: admin</span>
+      </div> -->
+    </el-form>
+  </div>
+</template>
+
+<script>
+import { isvalidUsername } from '@/utils/validate'
+import { getVercode } from '@/api/login'
+import Cookies from 'js-cookie'
+import ase from '@/utils/ase'
+import { mapGetters } from 'vuex'
+// import store from '@/store'
+export default {
+  name: 'Login',
+  data() {
+    const validateUsername = (rule, value, callback) => {
+      if (!isvalidUsername(value)) {
+        callback(new Error('请输入正确的用户名'))
+      } else {
+        callback()
+      }
+    }
+    const validatePass = (rule, value, callback) => {
+      if (value.length < 5) {
+        callback(new Error('密码不能小于5位'))
+      } else {
+        callback()
+      }
+    }
+    return {
+      loginForm: {
+        username: '',
+        password: '',
+        verify_code: '',
+        ccode: ''
+      },
+      vcodesrc: '',
+      loginRules: {
+        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
+        password: [{ required: true, trigger: 'blur', validator: validatePass }]
+      },
+      loading: false,
+      pwdType: 'password',
+      redirect: undefined,
+      key: '%u963F%u8A07unic',
+      organizationName: ''
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'topRouters',
+      'activeTopMenu',
+      'avatar',
+      'name',
+      'userRealName',
+      'sysinfo'
+    ])
+
+  },
+  watch: {
+    $route: {
+      // handler: function(route) {
+      //   this.redirect = route.query && route.query.redirect
+      // },
+      // immediate: true
+    }
+  },
+  created() {
+    this.getVcode()
+    console.log(';;;;', this.sysinfo)
+  },
+  methods: {
+    showPwd() {
+      if (this.pwdType === 'password') {
+        this.pwdType = ''
+      } else {
+        this.pwdType = 'password'
+      }
+    },
+    getVcode() {
+      getVercode().then(res => {
+        this.vcodesrc = res.data.Base64
+        this.loginForm.ccode = res.data.code
+      })
+    },
+    handleLogin() {
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          this.loading = true
+          var data = {
+            username: this.loginForm.username,
+            password: ase.encrypt(this.loginForm.password, this.key),
+            // password: this.loginForm.password,
+            verify_code: this.loginForm.verify_code,
+            ccode: this.loginForm.ccode
+          }
+          this.$store.dispatch('Login', data).then(() => {
+            this.loading = false
+            Cookies.set('loadfirstRoute', 1)
+            Cookies.set('loadfirstStore', 1)
+            this.$router.push({ path: this.redirect || '/' })
+          }).catch((reserr) => {
+            console.log(reserr)
+            if (reserr.code === 7) {
+              this.getVcode()
+            }
+            this.loading = false
+          })
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+    keysubm(e) {
+      if (e.key === 'Enter') {
+        this.handleLogin()
+      }
+    }
+  }
+}
+</script>
+
+<style rel="stylesheet/scss" lang="scss">
+$bg:#2d3a4b;
+$light_gray:#eee;
+
+/* reset element-ui css */
+.login-container {
+  .el-input {
+    display: inline-block;
+    height: 47px;
+    width: 85%;
+    input {
+      background: transparent;
+      border: 0px;
+      -webkit-appearance: none;
+      border-radius: 0px;
+      padding: 12px 5px 12px 15px;
+      color: $light_gray;
+      height: 47px;
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
+        -webkit-text-fill-color: #fff !important;
+      }
+    }
+  }
+  .el-form-item {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: #454545;
+  }
+}
+
+</style>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+$bg:#2d3a4b;
+$dark_gray:#889aa4;
+$light_gray:#eee;
+.login-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: $bg;
+  background-image:url('../../assets/images/bg.jpg');
+  background-position:center top;
+  background-size:cover;
+  .header{
+    height:60px;
+    width:100%;
+    z-index:100;
+    background:linear-gradient(to bottom, rgba(34, 34, 34, 0.5) 0%, rgba(34, 34, 34, 0) 100%);
+    .headerBox{
+      margin-right:50px;
+      p{
+        color: #333;
+        font-size:14px;
+        float:right;
+      }
+    }
+
+  }
+  .login-form {
+    position: absolute;
+    left: 50px;
+    top: 30px;
+    width: 520px;
+    max-width: 100%;
+    padding: 5px 35px 15px 35px;
+    margin: 50px auto;
+  }
+  .tips {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 10px;
+    span {
+      &:first-of-type {
+        margin-right: 16px;
+      }
+    }
+  }
+  .svg-container {
+    padding: 6px 5px 6px 15px;
+    color: $dark_gray;
+    vertical-align: middle;
+    width: 30px;
+    display: inline-block;
+  }
+  .title {
+    font-size: 26px;
+    font-weight: 400;
+    color: $light_gray;
+    color:#333;
+    margin: 0px auto 40px auto;
+    text-align: center;
+    font-weight: bold;
+  }
+  .show-pwd {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    font-size: 16px;
+    color: $dark_gray;
+    cursor: pointer;
+    user-select: none;
+  }
+}
+</style>
